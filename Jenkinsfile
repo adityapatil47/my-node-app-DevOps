@@ -14,11 +14,10 @@ pipeline {
                     // Running Docker directly with a custom command
                     sh '''
                         docker run --rm -d -p 3000:3000 -u root:root \
-                        -v ${WORKSPACE}:/app \
                         node:22-alpine /bin/sh -c "
                             cd /app &&
                             npm install &&
-                            npm start > output.log 2>&1
+                            npm start
                         "
                     '''
                 }
