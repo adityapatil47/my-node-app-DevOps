@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         CI = 'true'
-        SHELL = '/bin/sh'
+        SHELL = 'cmd'  // Set shell to cmd for Windows
     }
 
     stages {
@@ -12,10 +12,10 @@ pipeline {
             steps {
                 script {
                     // Running Docker directly with a custom command
-                    sh '''
-                        docker run --rm -d -p 3000:3000 -u root:root \
-                        node:22-alpine /bin/sh -c "
-                            cd /app &&
+                    bat '''
+                        docker run --rm -d -p 3000:3000 -u root:root -w /app \
+                        -v "%WORKSPACE%:/app" \
+                        node:22-alpine cmd /c "
                             npm install &&
                             npm start
                         "
