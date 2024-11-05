@@ -10,7 +10,7 @@ pipeline {
         CI = 'true'
         SHELL = '/bin/sh'
         // Define a Docker-compatible workspace path for your project
-        DOCKER_WORKSPACE = '/workspace/my-node-app'
+        WORKSPACE = '/workspace/my-node-app'
     }
 
     stages {
