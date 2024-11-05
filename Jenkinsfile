@@ -14,7 +14,6 @@ pipeline {
                     // Running Docker directly with a custom command
                     bat '''
                         docker run --rm -d -p 3000:3000 -u root:root -w /app \
-                        -v "%WORKSPACE%:/app" \
                         node:22-alpine cmd /c "
                             npm install &&
                             npm start
